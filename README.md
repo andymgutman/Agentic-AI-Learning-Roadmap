@@ -1,6 +1,6 @@
 # Agentic AI Learning Roadmap for Technical Project Managers
 
-**Here'ss a 15-step sequenced learning roadmap designed for a senior TPM who wants to master agentic AI across frameworks, SDLC, DevOps/SRE, and team leadership.** At 3–5 hours per week, the full path takes approximately 20–24 weeks. Every resource listed is free and publicly accessible — no paywalled courses, no paid certificates required. The roadmap progresses from foundational concepts through framework mastery, domain-specific applications, and culminates in governance and strategic leadership skills.
+**Here's a 15-step sequenced learning roadmap designed for a senior TPM who wants to master agentic AI across frameworks, SDLC, DevOps/SRE, and team leadership.** At 3–5 hours per week, the full path takes approximately 20–24 weeks. Every resource listed is free and publicly accessible — no paywalled courses, no paid certificates required. The roadmap progresses from foundational concepts through framework mastery, domain-specific applications, and culminates in governance and strategic leadership skills.
 
 The sequencing reflects real dependency chains: you cannot evaluate agents without understanding what they are, you cannot lead agentic teams without knowing the frameworks they use, and you cannot govern AI systems without grasping their risk profiles. Each step builds on the last, but the roadmap is also designed so a senior TPM can skip or skim familiar territory.
 
