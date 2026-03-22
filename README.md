@@ -11,13 +11,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Understand what separates AI agents from traditional automation (RPA, scripts, workflows). This step establishes the conceptual vocabulary — autonomy, reasoning loops, tool use, planning — that every subsequent module depends on. As a TPM, you need this foundation to evaluate vendor claims, distinguish real agents from "agentwashing," and communicate architecturally with engineering teams.
 
 **Domain tag:** Foundations
-
 **Prerequisites:** None
-
 **Estimated weekly sessions to complete:** 1 week (3–4 hours)
-
 **Difficulty:** Beginner
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -46,13 +42,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Learn prompt engineering not for writing code, but for specifying agent behavior, evaluating prompt quality, and creating reusable templates your team can standardize on. As the person defining "what good looks like" for AI agent outputs, your ability to write clear, structured instructions directly determines agent reliability.
 
 **Domain tag:** Foundations
-
 **Prerequisites:** Step 1
-
 **Estimated weekly sessions to complete:** 1–2 weeks (5–7 hours)
-
 **Difficulty:** Beginner
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -81,13 +73,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Survey the major agentic AI frameworks — LangChain, LangGraph, AutoGen, CrewAI, OpenAI Agents SDK, and Anthropic's tool use system — at a conceptual level. You don't need to code in each, but you need to understand their architectural philosophies, trade-offs, and when to recommend each. This is the map before the territory.
 
 **Domain tag:** Frameworks & Tools
-
 **Prerequisites:** Steps 1–2
-
 **Estimated weekly sessions to complete:** 2 weeks (6–8 hours)
-
 **Difficulty:** Beginner
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -117,13 +105,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Go deeper into the LangChain ecosystem, focusing on LangGraph as the production-grade framework for building stateful, multi-step AI agents. Understand state graphs, conditional routing, checkpointing, and memory — the building blocks your engineering teams will use. A TPM who understands these concepts can scope work accurately and spot architectural risks early.
 
 **Domain tag:** Frameworks & Tools
-
 **Prerequisites:** Step 3
-
 **Estimated weekly sessions to complete:** 2 weeks (6–10 hours)
-
 **Difficulty:** Intermediate
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -151,13 +135,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Explore the two leading multi-agent frameworks: CrewAI's role-based "crew" model and Microsoft's AutoGen conversation-based model. These frameworks define how multiple AI agents collaborate, delegate, and communicate — patterns you'll manage in production. Understanding their trade-offs helps you choose the right architecture for your team's use cases.
 
 **Domain tag:** Frameworks & Tools
-
 **Prerequisites:** Steps 3–4
-
 **Estimated weekly sessions to complete:** 2 weeks (6–8 hours)
-
 **Difficulty:** Intermediate
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -186,13 +166,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Move beyond individual frameworks to understand universal orchestration, coordination, and communication patterns for multi-agent systems. This is the architectural thinking layer — supervisor hierarchies, peer-to-peer swarms, event-driven coordination, and shared-state patterns. As a TPM, this knowledge lets you evaluate architecture proposals and anticipate failure modes.
 
 **Domain tag:** Frameworks & Tools
-
 **Prerequisites:** Steps 4–5
-
 **Estimated weekly sessions to complete:** 1–2 weeks (4–6 hours)
-
 **Difficulty:** Intermediate
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -219,13 +195,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Master the emerging interoperability standards that will define how agents connect to tools (MCP), communicate with each other (A2A), and follow project-specific instructions (AGENTS.md). These standards are moving from experimental to enterprise-adopted at extraordinary speed, and a TPM who understands them can make better build-vs-buy and vendor decisions.
 
 **Domain tag:** Frameworks & Tools
-
 **Prerequisites:** Steps 3–6
-
 **Estimated weekly sessions to complete:** 1–2 weeks (5–7 hours)
-
 **Difficulty:** Intermediate
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -256,13 +228,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Understand how AI agents are transforming every phase of software development: sprint planning, code review, testing, and documentation. This is where agentic AI directly impacts your daily TPM work — from evaluating tools like GitHub Copilot Code Review and CodeRabbit to setting team expectations for AI-augmented quality gates.
 
 **Domain tag:** AI-driven SDLC
-
 **Prerequisites:** Steps 1–3
-
 **Estimated weekly sessions to complete:** 2 weeks (6–8 hours)
-
 **Difficulty:** Intermediate
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -293,13 +261,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** The SDLC itself is being rewritten. This step covers the "Agentic Development Lifecycle" (ADLC) — how development processes, team structures, and agile ceremonies change when AI agents are active participants. This is strategic TPM territory: rethinking how you plan, estimate, review, and ship software.
 
 **Domain tag:** AI-driven SDLC
-
 **Prerequisites:** Steps 1, 8
-
 **Estimated weekly sessions to complete:** 1–2 weeks (4–6 hours)
-
 **Difficulty:** Intermediate
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -329,13 +293,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Understand how AI transforms operations monitoring — from threshold-based alerts to intelligent anomaly detection, event correlation, and predictive alerting. As a TPM overseeing SRE/DevOps teams, you need to distinguish AIOps hype from reality and know where AI genuinely reduces MTTR and on-call burden.
 
 **Domain tag:** DevOps & SRE
-
 **Prerequisites:** Steps 1–2
-
 **Estimated weekly sessions to complete:** 1–2 weeks (5–7 hours)
-
 **Difficulty:** Intermediate
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -366,13 +326,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Go deeper into AI's role in the incident lifecycle — detection, triage, communication, diagnosis, remediation, and post-mortems — plus autonomous remediation and self-healing systems. This step covers the operational frontier: AI agents that don't just alert you, but fix the problem.
 
 **Domain tag:** DevOps & SRE
-
 **Prerequisites:** Step 10
-
 **Estimated weekly sessions to complete:** 1–2 weeks (5–7 hours)
-
 **Difficulty:** Intermediate
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -404,13 +360,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Learn how to measure whether AI agents actually work — evaluation frameworks, benchmarks, tracing, and observability. This is the TPM's quality gate: without evals and observability, you're deploying hope, not software. This step covers both pre-deployment testing and production monitoring of agent behavior.
 
 **Domain tag:** Governance & Leadership
-
 **Prerequisites:** Steps 3–5
-
 **Estimated weekly sessions to complete:** 2 weeks (6–8 hours)
-
 **Difficulty:** Intermediate
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -441,13 +393,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Understand the unique risk profile of AI agents — prompt injection, excessive agency, cascading failures, hallucination-driven actions, and multi-agent trust boundaries. This step covers the OWASP Top 10 for LLMs and for Agentic Applications, the NIST AI Risk Management Framework, and practical guardrails. For a TPM, this is about building the risk register before something breaks in production.
 
 **Domain tag:** Governance & Leadership
-
 **Prerequisites:** Steps 1, 12
-
 **Estimated weekly sessions to complete:** 2 weeks (6–8 hours)
-
 **Difficulty:** Advanced
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -477,13 +425,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** Learn how team structures, sprint ceremonies, velocity metrics, and role definitions change when AI agents are both tools and team members. This is the leadership capstone for day-to-day TPM work: redesigning your operating model for a world where half the code is AI-generated and agents handle entire workflow segments.
 
 **Domain tag:** Governance & Leadership
-
 **Prerequisites:** Steps 8–9, 12
-
 **Estimated weekly sessions to complete:** 1–2 weeks (5–7 hours)
-
 **Difficulty:** Advanced
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
@@ -514,13 +458,9 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 **Description:** The capstone step: building an enterprise AI governance program that spans responsible AI principles, audit trails, regulatory compliance (EU AI Act, NIST), and strategic adoption planning. This is where you synthesize everything into an actionable organizational strategy — the deliverable your leadership expects from a senior TPM who "knows AI."
 
 **Domain tag:** Governance & Leadership
-
 **Prerequisites:** Steps 12–14
-
 **Estimated weekly sessions to complete:** 2 weeks (6–10 hours)
-
 **Difficulty:** Advanced
-
 **Free Resources:**
 
 | Title | URL | Type | Est. Hours |
