@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic AI Framework Comparison Matrix</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --bg2: #f7f6f2;
+    --bg3: #f1efe8;
+    --text: #1a1a18;
+    --text2: #5f5e5a;
+    --text3: #888780;
+    --border: rgba(0,0,0,0.12);
+    --border2: rgba(0,0,0,0.22);
+    --info-bg: #e6f1fb;
+    --info-text: #185fa5;
+    --success-bg: #eaf3de;
+    --success-text: #3b6d11;
+    --warn-bg: #faeeda;
+    --warn-text: #854f0b;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1c1a;
+      --bg2: #252523;
+      --bg3: #2c2c2a;
+      --text: #e8e6de;
+      --text2: #9c9a92;
+      --text3: #73726c;
+      --border: rgba(255,255,255,0.1);
+      --border2: rgba(255,255,255,0.2);
+      --info-bg: #042c53;
+      --info-text: #85b7eb;
+      --success-bg: #173404;
+      --success-text: #97c459;
+      --warn-bg: #412402;
+      --warn-text: #ef9f27;
+    }
+    .p-role { background: #633806 !important; color: #fac775 !important; }
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg3);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .page { max-width: 1140px; margin: 0 auto; }
+
+  .header { margin-bottom: 2rem; }
+  .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; }
+  h1 { font-size: 22px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+  .subtitle { font-size: 14px; color: var(--text2); line-height: 1.6; }
+
+  .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 20px; }
+
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 960px; }
+  thead tr { border-bottom: 0.5px solid var(--border2); background: var(--bg2); }
+  thead th { padding: 10px 13px; text-align: left; font-size: 11px; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; color: var(--text3); white-space: nowrap; }
+  tbody tr { border-bottom: 0.5px solid var(--border); transition: background .12s; cursor: pointer; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--bg2); }
+  tbody tr.active { background: var(--info-bg); }
+  td { padding: 10px 13px; vertical-align: top; font-size: 13px; color: var(--text); line-height: 1.5; }
+  .fw { font-weight: 500; }
+  .vend { font-size: 11px; color: var(--text3); }
+
+  .pill { display: inline-block; font-size: 11px; padding: 2px 9px; border-radius: 20px; font-weight: 500; white-space: nowrap; }
+  .p-graph { background: var(--info-bg); color: var(--info-text); }
+  .p-conv  { background: var(--success-bg); color: var(--success-text); }
+  .p-role  { background: #faeeda; color: #854f0b; }
+  .p-tool  { background: var(--bg3); color: var(--text3); border: 0.5px solid var(--border); }
+
+  .dots { display: flex; gap: 3px; align-items: center; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border2); }
+  .dot.on { background: var(--info-text); }
+
+  .lic-mit    { color: var(--success-text); font-weight: 500; font-size: 12px; }
+  .lic-apache { color: var(--info-text); font-weight: 500; font-size: 12px; }
+  .lic-prop   { color: var(--warn-text); font-weight: 500; font-size: 12px; }
+
+  .td-sm { font-size: 12px; color: var(--text2); }
+
+  .detail-panel { padding: 16px 20px; border-top: 0.5px solid var(--border); background: var(--bg2); display: none; }
+  .detail-panel.show { display: block; }
+  .detail-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .detail-name { font-size: 15px; font-weight: 500; }
+  .detail-status { font-size: 11px; color: var(--text3); }
+  .detail-desc { font-size: 13px; color: var(--text2); line-height: 1.6; margin-bottom: 10px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 11px; padding: 3px 9px; border-radius: 20px; border: 0.5px solid var(--border2); color: var(--text3); }
+
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: var(--text3); margin-bottom: 12px; }
+  .recs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 720px) { .recs { grid-template-columns: 1fr; } }
+  .rec-card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 16px 18px; }
+  .rec-card.featured { border: 1.5px solid rgba(56,138,221,0.45); }
+  .rec-scenario { font-size: 10px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--text3); margin-bottom: 5px; }
+  .rec-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 10px; line-height: 1.4; }
+  .rec-label { font-size: 10px; text-transform: uppercase; letter-spacing: .05em; color: var(--text3); margin-bottom: 3px; }
+  .rec-winner { font-size: 15px; font-weight: 500; color: var(--info-text); margin-bottom: 4px; }
+  .rec-alt { font-size: 11px; color: var(--text3); margin-bottom: 10px; }
+  .rec-divider { border: none; border-top: 0.5px solid var(--border); margin: 10px 0; }
+  .rec-reason { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text2); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="eyebrow">Step 3 · Agentic AI Learning Roadmap for TPMs</div>
+    <h1>Agentic AI Framework Comparison Matrix</h1>
+    <p class="subtitle">Survey of major agentic AI frameworks — architectural models, trade-offs, and scenario recommendations. Click any row to expand framework details.</p>
+  </div>
+
+  <div class="legend">
+    <span class="legend-item"><span class="pill p-graph">Graph-based</span></span>
+    <span class="legend-item"><span class="pill p-conv">Conversation-based</span></span>
+    <span class="legend-item"><span class="pill p-role">Role-based</span></span>
+    <span class="legend-item"><span class="pill p-tool">Tool-use / MCP</span></span>
+    <span class="legend-item"><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span>&nbsp;Maturity (5 = highest)</span>
+  </div>
+
+  <div class="card">
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Framework</th>
+            <th>Architectural model</th>
+            <th>Orchestration pattern</th>
+            <th>Language support</th>
+            <th>Memory model</th>
+            <th>Human-in-the-loop</th>
+            <th>Observability</th>
+            <th>License</th>
+            <th>Maturity</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div id="detail" class="detail-panel"></div>
+  </div>
+
+  <div class="section-label">Scenario Recommendations</div>
+  <div class="recs" id="recs"></div>
+
+</div>
+
+<script>
+const frameworks = [
+  {
+    name: "LangGraph", vendor: "LangChain",
+    arch: "graph", archLabel: "Graph-based",
+    orch: "State graph w/ conditional edges",
+    lang: "Python, JS/TS",
+    mem: "Thread state (short-term) + persistent store (long-term)",
+    hitl: "Native interrupt/resume checkpointing",
+    obs: "LangSmith (first-party); OpenTelemetry-compatible",
+    lic: "MIT", licType: "mit", mat: 4,
+    status: "Active — recommended LangChain path",
+    desc: "LangGraph models agents as directed state graphs — nodes represent actions, edges define transitions. Ideal for complex, multi-step workflows with branching logic and durable execution. Replaces legacy LangChain agents (deprecated). Strong human-in-the-loop story via checkpoints.",
+    tags: ["Production-grade","Stateful","Multi-agent","Durable execution","Active 2026"],
+  },
+  {
+    name: "CrewAI", vendor: "CrewAI Inc.",
+    arch: "role", archLabel: "Role-based",
+    orch: "Sequential or hierarchical crews",
+    lang: "Python",
+    mem: "Agent-level short-term + optional long-term RAG",
+    hitl: "Limited — supports human input tasks in flow",
+    obs: "CrewAI+ platform (paid); minimal OSS observability",
+    lic: "MIT", licType: "mit", mat: 3,
+    status: "Active & growing",
+    desc: "CrewAI organizes agents into 'crews' of roles with defined goals and backstories — closest to how human teams operate. Great for multi-agent collaboration pipelines. Sequential and hierarchical process modes. Python-only with strong developer ergonomics.",
+    tags: ["Multi-agent","Role-based","Collaboration","Python-only","Active 2026"],
+  },
+  {
+    name: "AutoGen", vendor: "Microsoft",
+    arch: "conv", archLabel: "Conversation-based",
+    orch: "ConversableAgents + GroupChat",
+    lang: "Python (.NET in preview)",
+    mem: "Message history in context; external via tools",
+    hitl: "UserProxy agent pattern; nested chat flows",
+    obs: "AutoGen Studio UI; transitioning to Agent Framework",
+    lic: "CC BY-NC 4.0 / MIT", licType: "apache", mat: 3,
+    status: "Transitioning → Microsoft Agent Framework",
+    desc: "AutoGen structures multi-agent interaction as conversations between ConversableAgents. GroupChat enables N-way agent dialogue. Being superseded by Microsoft Agent Framework. Covers the four agentic design patterns: Reflection, Tool Use, Planning, Multi-Agent Collaboration.",
+    tags: ["Multi-agent","Group chat","Transitioning","Research-friendly"],
+  },
+  {
+    name: "OpenAI Agents SDK", vendor: "OpenAI",
+    arch: "conv", archLabel: "Conversation-based",
+    orch: "Agents + handoffs + guardrails",
+    lang: "Python, JS/TS",
+    mem: "Thread-level persistence via API; external stores",
+    hitl: "Approval hooks on tool calls; tracing API",
+    obs: "OpenAI Traces dashboard (built-in); Datadog integration",
+    lic: "MIT", licType: "mit", mat: 3,
+    status: "Active — Assistants API retiring Aug 2026",
+    desc: "OpenAI's official framework for building agents with handoffs, guardrails, and structured tool calling. First-class support for Responses API (replacing Assistants). Traces are built into the platform — no separate observability setup needed.",
+    tags: ["First-party OpenAI","Handoffs","Guardrails","Active 2026","Assistants deprecated"],
+  },
+  {
+    name: "Anthropic Tool Use", vendor: "Anthropic",
+    arch: "tool", archLabel: "Tool-use / MCP",
+    orch: "Client-orchestrated + MCP servers",
+    lang: "Python, JS/TS, any HTTP",
+    mem: "Conversation turns; extended context window",
+    hitl: "Client controls all loop iterations",
+    obs: "Via third-party (Arize Phoenix, LangSmith); no first-party dashboard",
+    lic: "Proprietary API (MIT SDKs)", licType: "prop", mat: 4,
+    status: "Active — MCP expanding rapidly (10,000+ servers)",
+    desc: "Claude's native tool use is client-orchestrated: the model decides which tools to call, the client executes them and returns results. MCP extends this with a universal server protocol adopted by all major AI vendors. Flexible and interoperable — not a 'framework' per se, but the substrate many frameworks build on.",
+    tags: ["MCP-native","Interoperable","Client-orchestrated","Any language via HTTP"],
+  },
+  {
+    name: "LangChain (legacy)", vendor: "LangChain",
+    arch: "graph", archLabel: "Graph-based",
+    orch: "LCEL chains + legacy agents",
+    lang: "Python, JS/TS",
+    mem: "BufferMemory, VectorStore; largely replaced by LangGraph",
+    hitl: "Limited in legacy agents; use LangGraph instead",
+    obs: "LangSmith",
+    lic: "MIT", licType: "mit", mat: 2,
+    status: "Deprecated for agents — use LangGraph",
+    desc: "The original LangChain 'AgentExecutor' and legacy agent patterns are deprecated. New projects should use LangGraph. LangChain LCEL chains remain valid for simple pipelines. Understanding this context helps you steer teams away from legacy approaches.",
+    tags: ["Deprecated for agents","LCEL still valid","Use LangGraph instead"],
+  },
+];
+
+const scenarios = [
+  {
+    label: "Scenario 1",
+    title: "Single-agent customer support bot",
+    winner: "OpenAI Agents SDK",
+    alt: "Alt: Anthropic Tool Use + MCP",
+    reason: "Single-agent pipelines with guardrails and structured tool calls map naturally to the Agents SDK. Built-in tracing, handoff patterns (to human agents), and guardrails reduce boilerplate. Fastest path to production for a focused use case.",
+    featured: true,
+  },
+  {
+    label: "Scenario 2",
+    title: "Multi-agent code review pipeline",
+    winner: "LangGraph",
+    alt: "Alt: CrewAI for simpler role-based setup",
+    reason: "Code review is a multi-step stateful workflow: fetch PR → analyze → run checks → summarize → post comment. LangGraph's state graph + conditional edges + checkpointing handle the branching (pass/fail, human approval) and durable execution natively.",
+    featured: true,
+  },
+  {
+    label: "Scenario 3",
+    title: "Cross-platform DevOps automation",
+    winner: "Anthropic Tool Use + MCP",
+    alt: "Alt: LangGraph with MCP tools",
+    reason: "DevOps systems span Datadog, PagerDuty, GitHub, Kubernetes, and more. MCP's universal connector model lets each tool expose itself as an MCP server without framework lock-in. With 10,000+ published MCP servers, coverage is deep and growing fast.",
+    featured: false,
+  },
+];
+
+const archClass = { graph: "p-graph", conv: "p-conv", role: "p-role", tool: "p-tool" };
+
+function dots(n, max = 5) {
+  let s = '<div class="dots">';
+  for (let i = 0; i < max; i++) s += `<span class="dot${i < n ? ' on' : ''}"></span>`;
+  return s + '</div>';
+}
+
+const tbody = document.getElementById('tbody');
+frameworks.forEach(f => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><span class="fw">${f.name}</span><br><span class="vend">${f.vendor}</span></td>
+    <td><span class="pill ${archClass[f.arch]}">${f.archLabel}</span></td>
+    <td class="td-sm">${f.orch}</td>
+    <td class="td-sm">${f.lang}</td>
+    <td class="td-sm">${f.mem}</td>
+    <td class="td-sm">${f.hitl}</td>
+    <td class="td-sm">${f.obs}</td>
+    <td><span class="lic-${f.licType}">${f.lic}</span></td>
+    <td>${dots(f.mat)}</td>
+  `;
+  tr.addEventListener('click', () => {
+    const panel = document.getElementById('detail');
+    const wasActive = tr.classList.contains('active');
+    tbody.querySelectorAll('tr').forEach(r => r.classList.remove('active'));
+    if (wasActive) { panel.classList.remove('show'); return; }
+    tr.classList.add('active');
+    panel.innerHTML = `
+      <div class="detail-header">
+        <span class="detail-name">${f.name}</span>
+        <span class="pill ${archClass[f.arch]}">${f.archLabel}</span>
+        <span class="detail-status">${f.status}</span>
+      </div>
+      <div class="detail-desc">${f.desc}</div>
+      <div class="tags">${f.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+    `;
+    panel.classList.add('show');
+  });
+  tbody.appendChild(tr);
+});
+
+const recsEl = document.getElementById('recs');
+scenarios.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'rec-card' + (s.featured ? ' featured' : '');
+  card.innerHTML = `
+    <div class="rec-scenario">${s.label}</div>
+    <div class="rec-title">${s.title}</div>
+    <div class="rec-label">Recommended</div>
+    <div class="rec-winner">${s.winner}</div>
+    <div class="rec-alt">${s.alt}</div>
+    <hr class="rec-divider">
+    <div class="rec-reason">${s.reason}</div>
+  `;
+  recsEl.appendChild(card);
+});
+</script>
+</body>
+</html>
