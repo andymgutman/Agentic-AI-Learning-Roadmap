@@ -98,6 +98,25 @@ The sequencing reflects real dependency chains: you cannot evaluate agents witho
 
 **Pro tip:** The framework landscape shifts fast. As of early 2026: **LangGraph** is LangChain's recommended agent framework (legacy LangChain agents are deprecated), **AutoGen** is being succeeded by the **Microsoft Agent Framework**, and the **OpenAI Assistants API** shuts down August 2026 in favor of the Responses API + Agents SDK. Don't invest deeply in deprecated approaches — focus on LangGraph, CrewAI, and the OpenAI Agents SDK as the active frontrunners.
 
+**Framework Comparison Matrix**
+
+| Framework | Vendor | Architectural Model | Orchestration Pattern | Language Support | Memory Model | Human-in-the-Loop | Observability | License | Maturity (1–5) |
+|-----------|--------|--------------------|-----------------------|------------------|--------------|-------------------|---------------|---------|----------------|
+| LangGraph | LangChain | Graph-based | State graph w/ conditional edges | Python, JS/TS | Thread state (short-term) + persistent store (long-term) | Native interrupt/resume checkpointing | LangSmith (first-party); OpenTelemetry-compatible | MIT | 4 |
+| CrewAI | CrewAI Inc. | Role-based | Sequential or hierarchical crews | Python | Agent-level short-term + optional long-term RAG | Limited — supports human input tasks in flow | CrewAI+ platform (paid); minimal OSS observability | MIT | 3 |
+| AutoGen | Microsoft | Conversation-based | ConversableAgents + GroupChat | Python (.NET in preview) | Message history in context; external via tools | UserProxy agent pattern; nested chat flows | AutoGen Studio UI; transitioning to Agent Framework | CC BY-NC 4.0 / MIT | 3 |
+| OpenAI Agents SDK | OpenAI | Conversation-based | Agents + handoffs + guardrails | Python, JS/TS | Thread-level persistence via API; external stores | Approval hooks on tool calls; tracing API | OpenAI Traces dashboard (built-in); Datadog integration | MIT | 3 |
+| Anthropic Tool Use | Anthropic | Tool-use / MCP | Client-orchestrated + MCP servers | Python, JS/TS, any HTTP | Conversation turns; extended context window | Client controls all loop iterations | Via third-party (Arize Phoenix, LangSmith); no first-party dashboard | Proprietary API (MIT SDKs) | 4 |
+| LangChain (legacy) | LangChain | Graph-based | LCEL chains + legacy agents | Python, JS/TS | BufferMemory, VectorStore; largely replaced by LangGraph | Limited in legacy agents; use LangGraph instead | LangSmith | MIT | 2 |
+
+**Scenario Recommendations**
+
+| Scenario | Recommended Framework | Alternative | Rationale |
+|----------|-----------------------|-------------|-----------|
+| Single-agent customer support bot | OpenAI Agents SDK | Anthropic Tool Use + MCP | Single-agent pipelines with guardrails and structured tool calls map naturally to the Agents SDK. Built-in tracing, handoff patterns (to human agents), and guardrails reduce boilerplate. Fastest path to production for a focused use case. |
+| Multi-agent code review pipeline | LangGraph | CrewAI (simpler role-based setup) | Code review is a multi-step stateful workflow: fetch PR → analyze → run checks → summarize → post comment. LangGraph's state graph + conditional edges + checkpointing handle the branching (pass/fail, human approval) and durable execution natively. |
+| Cross-platform DevOps automation | Anthropic Tool Use + MCP | LangGraph with MCP tools | DevOps systems span Datadog, PagerDuty, GitHub, Kubernetes, and more. MCP's universal connector model lets each tool expose itself as an MCP server without framework lock-in. With 10,000+ published MCP servers, coverage is deep and growing fast. |
+
 ---
 
 ## Step 4: Deep Dive — LangChain, LangGraph & Stateful Agents
